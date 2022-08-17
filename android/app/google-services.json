@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "91157514039",
+    "project_id": "fourdeals-e4da2",
+    "storage_bucket": "fourdeals-e4da2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91157514039:android:9697f856c92fb26bf6bcb2",
+        "android_client_info": {
+          "package_name": "com.four.deals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91157514039-cgs9qg7c9o1mjk6mjmrps9pk4oaf7tji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.four.deals",
+            "certificate_hash": "da67764d90dbde3e7f25dc62a326ca3c6a03e542"
+          }
+        },
+        {
+          "client_id": "91157514039-l50eljtk11b95a5lccs6b8nfokoabi6q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.four.deals",
+            "certificate_hash": "31084810b12254ad8713dd0411dfe8e2357bb7b1"
+          }
+        },
+        {
+          "client_id": "91157514039-7m49ee1nod426ek408c4m10vprqar1cf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjqqO5XsAnqAL4KHc4AwgRO_cWHKxaqHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91157514039-7m49ee1nod426ek408c4m10vprqar1cf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
