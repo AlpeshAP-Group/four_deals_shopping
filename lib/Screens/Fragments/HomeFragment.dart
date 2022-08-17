@@ -1,11 +1,12 @@
 import 'dart:convert';
 
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -158,9 +159,24 @@ class HomeFragmentState extends State<HomeFragment> {
                 ),
               ),
             ),
-            floatingActionButton: const SizedBox(
-              height: 60,
-              width: 60,
+            floatingActionButton: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UploadProductScreen()));
+              },
+              child: Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(50)),
+                child: Icon(
+                  Icons.camera_alt_outlined,
+                  color: Colors.white,
+                ),
+              ),
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
@@ -896,128 +912,30 @@ class HomeFragmentState extends State<HomeFragment> {
                                         height: 10,
                                       )
                                     : AnimatedBottomNavigationBar(
-                                        bottomBarItems: [
-                                          BottomBarItemsModel(
-                                            icon: Container(
-                                                height: 20,
-                                                width: 20,
-                                                child: SvgPicture.asset(
-                                                    "assets/images/homeicondashboard.svg")),
-                                            iconSelected: Container(
-                                                height: 20,
-                                                width: 20,
-                                                child: SvgPicture.asset(
-                                                    "assets/images/homeicondashboard.svg")),
-                                            title: "Home",
-                                            dotColor: Colors.red,
-                                            onTap: () {
-                                              setState(() {
-                                                _currentIndex = 0;
-                                                _currentIndex2 = 0;
-                                              });
-                                            },
-                                          ),
-                                          BottomBarItemsModel(
-                                            icon: Container(
-                                              height: 20,
-                                              width: 20,
-                                              child: SvgPicture.asset(
-                                                  "assets/images/storeicon.svg"),
-                                            ),
-                                            iconSelected: Container(
-                                              height: 20,
-                                              width: 20,
-                                              child: SvgPicture.asset(
-                                                  "assets/images/storeicon.svg"),
-                                            ),
-                                            title: "Store",
-                                            dotColor: Colors.red,
-                                            onTap: () {
-                                              setState(() {
-                                                _currentIndex = 1;
-                                                _currentIndex2 = 1;
-                                              });
-                                            },
-                                          ),
-                                          BottomBarItemsModel(
-                                            icon: Container(
-                                              height: 20,
-                                              width: 20,
-                                              child: SvgPicture.asset(
-                                                  "assets/images/chaticondashboard.svg"),
-                                            ),
-                                            iconSelected: Container(
-                                              height: 20,
-                                              width: 20,
-                                              child: SvgPicture.asset(
-                                                  "assets/images/chaticondashboard.svg"),
-                                            ),
-                                            title: "Chat",
-                                            dotColor: Colors.red,
-                                            onTap: () {
-                                              setState(() {
-                                                _currentIndex = 2;
-                                                _currentIndex2 = 2;
-                                              });
-                                            },
-                                          ),
-                                          BottomBarItemsModel(
-                                            icon: Container(
-                                              height: 20,
-                                              width: 20,
-                                              child: SvgPicture.asset(
-                                                  "assets/images/accounticonsdashboard.svg"),
-                                            ),
-                                            iconSelected: Container(
-                                              height: 20,
-                                              width: 20,
-                                              child: SvgPicture.asset(
-                                                  "assets/images/accounticonsdashboard.svg"),
-                                            ),
-                                            title: "Account",
-                                            dotColor: Colors.red,
-                                            onTap: () async {
-                                              _navigateAndDisplaySelection(
-                                                  context);
-                                            },
-                                          ),
-                                        ],
-                                        bottomBarCenterModel:
-                                            BottomBarCenterModel(
-                                          centerBackgroundColor:
-                                              Color(0xff0178AE),
-                                          centerIcon:
-                                              const FloatingCenterButton(
-                                            child: Icon(
-                                              Icons.add,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          centerIconChild: [
-                                            FloatingCenterButtonChild(
-                                              child: const Icon(
-                                                Icons.cancel,
-                                                color: Colors.white,
-                                              ),
-                                              onTap: () {},
-                                            ),
-                                            FloatingCenterButtonChild(
-                                              child: const Icon(
-                                                Icons.add,
-                                                color: AppColors.white,
-                                              ),
-                                              onTap: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            UploadProductScreen()));
-                                              },
-                                            ),
+                                        icons: [
+                                            Icons.home_outlined,
+                                            Icons.store_outlined,
+                                            Icons.chat_outlined,
+                                            Icons.person_outline,
                                           ],
-                                        ),
-                                      ),
-                              ))),
+                                        activeIndex: _currentIndex,
+                                        gapLocation: GapLocation.center,
+                                        notchSmoothness:
+                                            NotchSmoothness.sharpEdge,
+                                        onTap: (index) {
+                                          setState(() {
+                                            if (index == 3) {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MyAccountFragment(
+                                                              _currentIndex2)));
+                                            } else {
+                                              _currentIndex = index;
+                                            }
+                                          });
+                                        })))),
             body: Container(
               child: Container(
                   width: MediaQuery.of(context).size.width,
